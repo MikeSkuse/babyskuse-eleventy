@@ -5,6 +5,14 @@ export default {
       url: '/about/'
     },
     {
+      text: 'Where',
+      url: '/where/'
+    },
+    {
+      text: 'RSVP',
+      url: '/rsvp/'
+    },
+    {
       text: 'Docs',
       url: '/get-started/'
     },
