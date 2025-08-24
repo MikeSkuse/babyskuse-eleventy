@@ -11,7 +11,7 @@ We'd love to have you attend our celebration of Baby Skuse, due in February 2026
 
 Please use the form below to let us know if you can make it!
 
-<form data-static-form-name="rsvp" class="rsvp-form">
+<form data-static-form-name="rsvp" class="rsvp-form" id="rsvpForm">
   <div class="form-group">
     <label for="name">Name *</label>
     <input type="text" id="name" name="name" required>
@@ -47,8 +47,12 @@ Please use the form below to let us know if you can make it!
     <textarea id="message" name="message" rows="4" placeholder="Any other information you'd like to share..."></textarea>
   </div>
 
-  <button type="submit" class="submit-btn">Submit RSVP</button>
+  <button type="submit" class="submit-btn" id="submitBtn">Submit RSVP</button>
 </form>
+
+<div id="messageContainer" class="message-container" style="display: none;">
+  <div id="messageContent" class="message-content"></div>
+</div>
 
 <style>
 .rsvp-form {
@@ -111,4 +115,92 @@ Please use the form below to let us know if you can make it!
 .submit-btn:active {
   transform: translateY(1px);
 }
+
+.message-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.message-content {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.message-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('rsvpForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const messageContainer = document.getElementById('messageContainer');
+  const messageContent = document.getElementById('messageContent');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Disable submit button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    
+    // Hide any previous messages
+    messageContainer.style.display = 'none';
+    
+    try {
+      // Get form data
+      const formData = new FormData(form);
+      
+      // Submit form using fetch
+      const response = await fetch('', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.text();
+      
+      if (response.ok) {
+        // Show success message
+        showMessage(result, 'success');
+        // Reset form
+        form.reset();
+      } else {
+        // Show error message
+        showMessage(result, 'error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      showMessage('Sorry, there was an error submitting your RSVP. Please try again.', 'error');
+    } finally {
+      // Re-enable submit button
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit RSVP';
+    }
+  });
+  
+  function showMessage(message, type) {
+    messageContent.innerHTML = message;
+    messageContainer.className = `message-container message-${type}`;
+    messageContainer.style.display = 'block';
+    
+    // Scroll to message
+    messageContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+</script>
