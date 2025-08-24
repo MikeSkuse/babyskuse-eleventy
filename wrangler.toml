@@ -1,0 +1,12 @@
+name = "babyskuse"
+main = "src/index.ts"
+compatibility_date = "2025-02-04"
+
+# KV namespace binding
+[[kv_namespaces]]
+binding = "rsvp"
+id = "1d1166cae7ce4eb6bc731c533b16d332"  # Replace with your actual KV namespace ID
+
+# Static assets
+[site]
+bucket = "dist"
