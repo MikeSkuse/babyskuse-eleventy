@@ -24,10 +24,8 @@ export const markdownLib = markdownIt({
   .use(markdownItAnchor, {
     slugify: slugifyString,
     tabIndex: false,
-    permalink: markdownItAnchor.permalink.linkAfterHeader({
-      style: 'visually-hidden',
-      assistiveText: title => `Permalink to "${title}"`,
-      visuallyHiddenClass: 'visually-hidden'
+    permalink: markdownItAnchor.permalink.headerLink({
+      class: 'heading-anchor'
     })
   })
   .use(markdownItClass, {})
