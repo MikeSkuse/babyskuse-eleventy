@@ -23,12 +23,16 @@ Please use the form below to let us know if you can make it!
   </div>
 
   <div class="form-group">
+    <label for="phone">Phone *</label>
+    <input type="phone" id="phone" name="phone" required>
+  </div>
+
+  <div class="form-group">
     <label for="attending">Will you be attending? *</label>
     <select id="attending" name="attending" required>
       <option value="">Please select...</option>
       <option value="yes">Yes, I'll be there!</option>
       <option value="no">Sorry, I can't make it</option>
-      <option value="maybe">Maybe, I'll let you know</option>
     </select>
   </div>
 
@@ -40,11 +44,6 @@ Please use the form below to let us know if you can make it!
   <div class="form-group">
     <label for="dietary">Any dietary requirements?</label>
     <textarea id="dietary" name="dietary" rows="3" placeholder="e.g., vegetarian, gluten-free, allergies..."></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="message">Additional message (optional)</label>
-    <textarea id="message" name="message" rows="4" placeholder="Any other information you'd like to share..."></textarea>
   </div>
 
   <button type="submit" class="submit-btn" id="submitBtn">Submit RSVP</button>
