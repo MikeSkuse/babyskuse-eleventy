@@ -20,6 +20,7 @@ description: 'A Baby Skuse Celebration.'
         <strong>📅 Date:</strong> 1st November 2025 </br>
         <strong>🕐 Time:</strong> 4:00 PM - 7:30 PM </br>
         <strong>📍 Where:</strong> <a href="https://maps.app.goo.gl/Hru23P6kad21dQ1NA" target="_blank" rel="noopener">Royal Wootton Bassett Memorial Hall</a> </br>
+        <strong>❓ What:</strong> Fun activities, games and party foods </br>
       </p>
       <p>With fun <strong>activities</strong> and <strong>game</strong> and <strong>party foods</strong></p>
       <p>Please <a href="#rsvp">RSVP here</a> to let us know if you can make it!</p>
