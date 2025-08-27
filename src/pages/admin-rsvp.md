@@ -16,8 +16,8 @@ This page shows all RSVP submissions stored in Cloudflare KV.
 <script>
 async function loadRSVPs() {
   try {
-    // This will be handled by a Cloudflare Function
-    const response = await fetch('/api/rsvps');
+            // This will be handled by a Cloudflare Function
+        const response = await fetch('/api/rsvp');
     if (response.ok) {
       const rsvps = await response.json();
       displayRSVPs(rsvps);

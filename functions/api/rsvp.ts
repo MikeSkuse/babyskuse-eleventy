@@ -1,61 +1,4 @@
-export default {
-  async fetch(request: Request, env: any, ctx: any) {
-    const url = new URL(request.url);
-    
-    console.log('Request:', url.pathname, request.method);
-    console.log('Available env keys:', Object.keys(env));
-    
-    // Handle form submissions
-    if (url.pathname === '/rsvp/' && request.method === 'POST') {
-      return handleRSVPSubmission(request, env);
-    }
-    
-    // Handle API requests for admin
-    if (url.pathname === '/api/rsvps' && request.method === 'GET') {
-      return handleRSVPList(env);
-    }
-    
-    // Debug: Show available bindings
-    if (url.pathname === '/debug') {
-      return new Response(`
-        <h1>Debug Info</h1>
-        <p>Available env keys: ${Object.keys(env).join(', ')}</p>
-        <p>ASSETS available: ${!!env.ASSETS}</p>
-        <p>__STATIC_CONTENT available: ${!!env.__STATIC_CONTENT}</p>
-        <p>__STATIC_CONTENT_MANIFEST available: ${!!env.__STATIC_CONTENT_MANIFEST}</p>
-      `, { headers: { 'Content-Type': 'text/html' } });
-    }
-    
-    // For now, return a simple response indicating the Worker is working
-    return new Response(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Baby Skuse - Worker Test</title>
-      </head>
-      <body>
-        <h1>Baby Skuse Worker is Working!</h1>
-        <p>The Worker is deployed and responding correctly.</p>
-        <p>Path: ${url.pathname}</p>
-        <p>Method: ${request.method}</p>
-        <hr>
-        <p>Next steps:</p>
-        <ul>
-          <li>Add static site serving</li>
-          <li>Test RSVP form at /rsvp/</li>
-          <li>Test admin panel at /admin-rsvp/</li>
-        </ul>
-        <p><a href="/debug">Debug Info</a></p>
-      </body>
-      </html>
-    `, {
-      status: 200,
-      headers: { 'Content-Type': 'text/html' }
-    });
-  },
-};
-
-async function handleRSVPSubmission(request: Request, env: any) {
+export async function onRequestPost({ request, env }: { request: Request; env: any }) {
   try {
     const formData = await request.formData();
     
@@ -110,7 +53,7 @@ async function handleRSVPSubmission(request: Request, env: any) {
   }
 }
 
-async function handleRSVPList(env: any) {
+export async function onRequestGet({ env }: { env: any }) {
   try {
     // List all keys in the KV namespace
     const keys = await env.rsvp.list();
@@ -150,21 +93,3 @@ async function handleRSVPList(env: any) {
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

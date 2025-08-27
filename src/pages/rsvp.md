@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const formData = new FormData(form);
       
       // Submit form using fetch
-      const response = await fetch('', {
+      const response = await fetch('/api/rsvp', {
         method: 'POST',
         body: formData
       });
