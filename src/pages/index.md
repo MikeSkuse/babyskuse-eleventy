@@ -3,6 +3,9 @@ layout: base
 permalink: /index.html
 title: 'Baby Skuse'
 description: 'A Baby Skuse Celebration.'
+discover:
+  title: 'Baby Skuse Celebration'
+  description: 'Join us for a special celebration with fun activities, games and party foods on November 1st, 2025'
 ---
 
 <div class="wrapper">
@@ -22,7 +25,6 @@ description: 'A Baby Skuse Celebration.'
         <strong>📍 Where:</strong> <a href="https://maps.app.goo.gl/Hru23P6kad21dQ1NA" target="_blank" rel="noopener">Royal Wootton Bassett Memorial Hall</a> </br>
         <strong>❓ What:</strong> Fun activities, games and party foods </br>
       </p>
-      <p>With fun <strong>activities</strong> and <strong>game</strong> and <strong>party foods</strong></p>
       <p>Please <a href="#rsvp">RSVP here</a> to let us know if you can make it!</p>
     </div>
   </article>
