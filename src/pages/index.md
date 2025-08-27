@@ -22,7 +22,7 @@ description: 'A Baby Skuse Celebration.'
         <strong>📍 Where:</strong> <a href="https://maps.app.goo.gl/Hru23P6kad21dQ1NA" target="_blank" rel="noopener">Royal Wootton Bassett Memorial Hall</a> </br>
       </p>
       <p>With fun <strong>activities</strong> and <strong>game</strong> and <strong>party foods</strong></p>
-      <p>Please <a href="#rsvp/">RSVP here</a> to let us know if you can make it!</p>
+      <p>Please <a href="#rsvp">RSVP here</a> to let us know if you can make it!</p>
     </div>
   </article>
 
@@ -128,7 +128,9 @@ description: 'A Baby Skuse Celebration.'
   }
 
   .submit-btn:hover {
-    background: var(--color-primary-dark);
+    background: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
   .submit-btn:active {
