@@ -79,12 +79,13 @@ Please use the form below to let us know if you can make it!
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid var(--color-border);
+  border: 2px solid #d1d5db;
   border-radius: var(--border-radius);
   background: var(--color-bg);
   color: var(--color-text);
   font-family: inherit;
   font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-group input:focus,
