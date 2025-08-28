@@ -3,9 +3,11 @@
 export const deployment = {
   version: process.env.npm_package_version || '4.3.3',
   buildTime: new Date().toISOString(),
-  environment: process.env.NODE_ENV || 'development',
-  // These will be populated by Cloudflare Pages during deployment
-  deploymentId: process.env.CF_PAGES_DEPLOYMENT_ID || 'local',
-  commitHash: process.env.CF_PAGES_COMMIT_SHA || 'local',
-  branch: process.env.CF_PAGES_BRANCH || 'local'
+  environment: process.env.ELEVENTY_ENV || 'development',
+  // For now, we'll use a simpler approach that works reliably
+  deploymentId: 'build-' + Date.now().toString(36),
+  commitHash: process.env.GITHUB_SHA ? process.env.GITHUB_SHA.substring(0, 7) : 'local',
+  branch: process.env.GITHUB_REF_NAME || 'local'
 };
+
+
