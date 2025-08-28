@@ -1,6 +1,6 @@
 // Deployment information
 // This can be populated during build time or accessed via environment variables
-export const deployment = {
+export default {
   version: process.env.npm_package_version || '4.3.3',
   buildTime: new Date().toISOString(),
   environment: process.env.ELEVENTY_ENV || 'development',
