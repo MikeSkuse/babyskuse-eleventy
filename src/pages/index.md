@@ -34,7 +34,7 @@ discover:
       <h2 id="rsvp"><a href="#rsvp" class="heading-anchor">RSVP</a></h2>
       <form data-static-form-name="rsvp" class="rsvp-form" id="rsvpForm">
   <div class="form-group">
-    <label for="name">Name *</label>
+    <label for="name">Full Name *</label>
     <input type="text" id="name" name="name" required>
   </div>
 
