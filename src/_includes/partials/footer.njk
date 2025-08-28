@@ -4,16 +4,8 @@
       <nav class="cluster text-step-0" aria-label="{{ meta.navigation.ariaBottom }}">
         &copy; {% year %}
         <a href="/" {{ indicateActiveHome }}
-          ><span class="font-display">{{ meta.siteName }}</span>
+          ><span class="font-display">{{ meta.siteName }}</span> <small>Commit: {{ deployment.commitHash }} Build Time: {{ deployment.buildTime | formatDate('YYYY-MM-DD HH:mm') }}</small>
         </a>
-        <span class="deployment-info">
-          <small style="opacity: 0.7; font-size: 0.8em;" title="Built: {{ deployment.buildTime | formatDate('YYYY-MM-DD HH:mm') }}">
-            {% if deployment.commitHash != 'local' %}
-              {{ deployment.commitHash }}
-            {% endif %}
-          </small>
-        </span>
-
         {% for item in navigation.bottom %}
           <a
             href="{{ item.url }}"
