@@ -4,8 +4,17 @@
       <nav class="cluster text-step-0" aria-label="{{ meta.navigation.ariaBottom }}">
         &copy; {% year %}
         <a href="/" {{ indicateActiveHome }}
-          ><span class="font-display">{{ meta.siteName }}</span> <small>{{ pkg.version }}</small>
+          ><span class="font-display">{{ meta.siteName }}</span>
         </a>
+        <span class="deployment-info">
+          <small style="opacity: 0.7; font-size: 0.8em;" title="Environment: {{ deployment.environment }} | Branch: {{ deployment.branch }} | Built: {{ deployment.buildTime | date('YYYY-MM-DD HH:mm') }}">
+            {% if deployment.deploymentId != 'local' %}
+              Deploy: {{ deployment.deploymentId | truncate(8, true, '') }} | Commit: {{ deployment.commitHash | truncate(7, true, '') }}
+            {% else %}
+              v{{ deployment.version }} (local)
+            {% endif %}
+          </small>
+        </span>
 
         {% for item in navigation.bottom %}
           <a
