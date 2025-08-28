@@ -5,6 +5,7 @@ export async function onRequestPost({ request, env }: { request: Request; env: a
     // Extract form data
     const name_field = formData.get("name");
     const email = formData.get("email");
+    const phone = formData.get("phone");
     const attending = formData.get("attending");
     const guests = formData.get("guests");
     const dietary = formData.get("dietary");
@@ -19,6 +20,7 @@ export async function onRequestPost({ request, env }: { request: Request; env: a
       timestamp: new Date().toISOString(),
       name: name_field,
       email: email,
+      phone: phone,
       attending: attending,
       guests: guests,
       dietary: dietary,
