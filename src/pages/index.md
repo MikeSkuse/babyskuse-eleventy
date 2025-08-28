@@ -44,8 +44,8 @@ discover:
   </div>
 
   <div class="form-group">
-    <label for="phone">Phone *</label>
-    <input type="phone" id="phone" name="phone" required>
+    <label for="phone">Phone</label>
+    <input type="phone" id="phone" name="phone">
   </div>
 
   <div class="form-group">
@@ -59,7 +59,7 @@ discover:
 
   <div class="form-group">
     <label for="guests">Number of guests (including yourself)</label>
-    <input type="number" id="guests" name="guests" min="1" max="5" value="1">
+    <input type="number" id="guests" name="guests" min="1" max="10" value="1">
   </div>
 
   <div class="form-group">
