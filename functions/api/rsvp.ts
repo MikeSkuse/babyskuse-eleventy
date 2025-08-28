@@ -32,7 +32,7 @@ export async function onRequestPost({ request, env }: { request: Request; env: a
     
     // Return a success response
     return new Response(
-      `Thank you ${name_field}! Your RSVP has been received and saved. We'll see you at the celebration!`,
+      `Thank you ${name_field}! Your RSVP has been received and saved.`,
       {
         status: 200,
         headers: {
