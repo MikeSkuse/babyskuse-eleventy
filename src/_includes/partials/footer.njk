@@ -4,8 +4,9 @@
       <nav class="cluster text-step-0" aria-label="{{ meta.navigation.ariaBottom }}">
         &copy; {% year %}
         <a href="/" {{ indicateActiveHome }}
-          ><span class="font-display">{{ meta.siteName }}</span> <small> | {{ deployment.commitHash }} | {{ deployment.buildTime | formatDate('YYYY-MM-DD HH:mm') }}</small>
+          ><span class="font-display">{{ meta.siteName }}</span>
         </a>
+        <small> | {{ deployment.commitHash }} | {{ deployment.buildTime | formatDate('YYYY-MM-DD HH:mm') }}</small>
         {% for item in navigation.bottom %}
           <a
             href="{{ item.url }}"
