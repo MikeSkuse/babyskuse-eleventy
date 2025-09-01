@@ -23,7 +23,9 @@ discover:
         <strong>📅 Date:</strong> 1st November 2025 </br>
         <strong>🕐 Time:</strong> 4:00 PM - 7:30 PM </br>
         <strong>📍 Where:</strong> <a href="https://maps.app.goo.gl/Hru23P6kad21dQ1NA" target="_blank" rel="noopener">Royal Wootton Bassett Memorial Hall</a> </br>
-        <strong>❓ What:</strong> Fun activities, games and party foods </br>
+        <strong>🥪 Food:</strong> Party Foods / Cold Buffet and Cake 🍰 </br>
+        <strong>🎲 Games:</strong> Baby Bingo, Baby Trivia, The Price is Right, What's in the box</br>
+        <strong>📃 Activities:</strong> Wordsearch, Word Scramble, Baby Predictions, Advice & Wishes </br>
       </p>
       <p>Please <a href="#rsvp">RSVP here</a> to let us know if you can make it!</p>
     </div>
@@ -259,6 +261,6 @@ discover:
   <li>Muslin Squares</li>
   <li>Bibs / Dribble Bibs</li>
 </ul>
-<p>Please avoid products with Lavender or Aloe Vera due to allergies</p>
+<p>⚠️ Please avoid products with Lavender or Aloe Vera due to allergies</p>
  </article>
 </div>
