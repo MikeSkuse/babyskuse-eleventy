@@ -250,17 +250,15 @@ discover:
 <p>
   However, if you would still like to give something, we would appreciate any of the following:
 </p>
-<p>For Baby:</p>
 <ul>
   <li>Books</li>
   <li>Nappies</li>
-  <li>Baby grows - 3-6, 6-9 Months</li>
-  <li>Water Wipes brand (due to alergies)</li>
+  <li>Baby grows: 3-6, 6-9 Months</li>
+  <li>Water Wipes brand (Due to allergies)</li>
+  <li>Aveeno Baby Products (No lavender)</li>
+  <li>Muslin Squares</li>
+  <li>Bibs / Dribble Bibs</li>
 </ul>
-<p>For Mum:</p>
-<ul>
-  <li>1</li>
-  <li>2</li>
-</ul>
+<p>Please avoid products with Lavender or Aloe Vera due to allergies</p>
  </article>
 </div>
