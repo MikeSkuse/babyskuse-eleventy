@@ -19,11 +19,11 @@ discover:
     <div class="wrapper flow prose">
       <h2 id="title">You're invited!</h2>
       <p>
-        We'd love to have you attend our celebration of Baby Skuse! </br>
+        We'd love to have you attend our celebration of Baby Skuse! (due in Feb 2026)</br>
         <strong>📅 Date:</strong> 1st November 2025 </br>
         <strong>🕐 Time:</strong> 4:00 PM - 7:30 PM </br>
-        <strong>📍 Where:</strong> <a href="https://maps.app.goo.gl/Hru23P6kad21dQ1NA" target="_blank" rel="noopener">Royal Wootton Bassett Memorial Hall</a> </br>
-        <strong>🥪 Food:</strong> Party Foods / Cold Buffet and Cake 🍰 </br>
+        <strong>📍 Where:</strong> <a href="https://maps.app.goo.gl/Hru23P6kad21dQ1NA" target="_blank" rel="noopener">Royal Wootton Bassett Memorial Hall</a>(Ample free parking!🅿️)</br>
+        <strong>🥪 Food:</strong> Party Foods & Drinks / Cold Buffet and Cake 🍰 </br>
         <strong>🎲 Games:</strong> Baby Bingo, Baby Trivia, The Price is Right, What's in the box</br>
         <strong>📃 Activities:</strong> Wordsearch, Word Scramble, Baby Predictions, Advice & Wishes </br>
       </p>
@@ -260,6 +260,7 @@ discover:
   <li>Aveeno Baby Products (No lavender)</li>
   <li>Muslin Squares</li>
   <li>Bibs / Dribble Bibs</li>
+  <li>Baby toys</li>
 </ul>
 <p>⚠️ Please avoid products with Lavender or Aloe Vera due to allergies</p>
  </article>
