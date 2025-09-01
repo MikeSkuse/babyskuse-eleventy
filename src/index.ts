@@ -10,21 +10,9 @@ export default {
       return handleRSVPSubmission(request, env);
     }
     
-    // Handle API requests for admin
-    if (url.pathname === '/api/rsvps' && request.method === 'GET') {
-      return handleRSVPList(env);
-    }
+    // Admin endpoint removed - no longer needed
     
-    // Debug: Show available bindings
-    if (url.pathname === '/debug') {
-      return new Response(`
-        <h1>Debug Info</h1>
-        <p>Available env keys: ${Object.keys(env).join(', ')}</p>
-        <p>ASSETS available: ${!!env.ASSETS}</p>
-        <p>__STATIC_CONTENT available: ${!!env.__STATIC_CONTENT}</p>
-        <p>__STATIC_CONTENT_MANIFEST available: ${!!env.__STATIC_CONTENT_MANIFEST}</p>
-      `, { headers: { 'Content-Type': 'text/html' } });
-    }
+    // Debug endpoint removed for security
     
     // For now, return a simple response indicating the Worker is working
     return new Response(`
@@ -43,9 +31,7 @@ export default {
         <ul>
           <li>Add static site serving</li>
           <li>Test RSVP form at /rsvp/</li>
-          <li>Test admin panel at /admin-rsvp/</li>
         </ul>
-        <p><a href="/debug">Debug Info</a></p>
       </body>
       </html>
     `, {
@@ -110,46 +96,7 @@ async function handleRSVPSubmission(request: Request, env: any) {
   }
 }
 
-async function handleRSVPList(env: any) {
-  try {
-    // List all keys in the KV namespace
-    const keys = await env.rsvp.list();
-    
-    // Get all RSVP submissions
-    const rsvps: any[] = [];
-    for (const key of keys.keys) {
-      const value = await env.rsvp.get(key.name);
-      if (value) {
-        rsvps.push(JSON.parse(value));
-      }
-    }
-    
-    // Sort by timestamp (newest first)
-    rsvps.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-    
-    return new Response(JSON.stringify(rsvps), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
-  } catch (error) {
-    console.error('Error retrieving RSVPs:', error);
-    
-    return new Response(JSON.stringify({ error: 'Failed to retrieve RSVPs' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
-  }
-}
+
 
 
 

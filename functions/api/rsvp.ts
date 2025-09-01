@@ -1,8 +1,21 @@
 export async function onRequestPost({ request, env }: { request: Request; env: any }) {
   try {
+    // Rate limiting - check IP address
+    const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const rateLimitKey = `rate_limit:${clientIP}`;
+    
+    // Check if IP is rate limited (max 5 submissions per hour)
+    const rateLimitCount = await env.rsvp.get(rateLimitKey);
+    if (rateLimitCount && parseInt(rateLimitCount) >= 5) {
+      return new Response('Too many submissions. Please try again later.', { 
+        status: 429,
+        headers: { 'Content-Type': 'text/html' }
+      });
+    }
+
     const formData = await request.formData();
     
-    // Extract form data
+    // Extract and validate form data
     const name_field = formData.get("name");
     const email = formData.get("email");
     const phone = formData.get("phone");
@@ -11,28 +24,59 @@ export async function onRequestPost({ request, env }: { request: Request; env: a
     const dietary = formData.get("dietary");
     const message = formData.get("message");
 
+    // Input validation
+    if (!name_field || typeof name_field !== 'string' || name_field.trim().length === 0) {
+      return new Response('Name is required', { status: 400 });
+    }
+
+    if (!attending || typeof attending !== 'string' || !['yes', 'no'].includes(attending)) {
+      return new Response('Valid attendance selection is required', { status: 400 });
+    }
+
+    // Sanitize inputs
+    const sanitizedName = name_field.trim().substring(0, 100); // Limit length
+    const sanitizedEmail = email && typeof email === 'string' ? email.trim().substring(0, 254) : '';
+    const sanitizedPhone = phone && typeof phone === 'string' ? phone.trim().substring(0, 20) : '';
+    const sanitizedGuests = guests && typeof guests === 'string' ? parseInt(guests) || 1 : 1;
+    const sanitizedDietary = dietary && typeof dietary === 'string' ? dietary.trim().substring(0, 500) : '';
+    const sanitizedMessage = message && typeof message === 'string' ? message.trim().substring(0, 1000) : '';
+
+    // Validate email format if provided
+    if (sanitizedEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sanitizedEmail)) {
+      return new Response('Invalid email format', { status: 400 });
+    }
+
+    // Validate guests number
+    if (sanitizedGuests < 1 || sanitizedGuests > 10) {
+      return new Response('Number of guests must be between 1 and 10', { status: 400 });
+    }
+
     // Create a unique ID for this submission
     const submissionId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     
-    // Create the submission object
+    // Create the submission object with sanitized data
     const submission = {
       id: submissionId,
       timestamp: new Date().toISOString(),
-      name: name_field,
-      email: email,
-      phone: phone,
+      name: sanitizedName,
+      email: sanitizedEmail,
+      phone: sanitizedPhone,
       attending: attending,
-      guests: guests,
-      dietary: dietary,
-      message: message
+      guests: sanitizedGuests,
+      dietary: sanitizedDietary,
+      message: sanitizedMessage
     };
 
     // Store in KV
     await env.rsvp.put(submissionId, JSON.stringify(submission));
     
+    // Update rate limit counter
+    const currentCount = rateLimitCount ? parseInt(rateLimitCount) : 0;
+    await env.rsvp.put(rateLimitKey, (currentCount + 1).toString(), { expirationTtl: 3600 }); // 1 hour
+    
     // Return a success response
     return new Response(
-      `Thank you ${name_field}! Your RSVP has been received and saved.`,
+      `Thank you ${sanitizedName}! Your RSVP has been received and saved.`,
       {
         status: 200,
         headers: {
@@ -52,46 +96,5 @@ export async function onRequestPost({ request, env }: { request: Request; env: a
         },
       }
     );
-  }
-}
-
-export async function onRequestGet({ env }: { env: any }) {
-  try {
-    // List all keys in the KV namespace
-    const keys = await env.rsvp.list();
-    
-    // Get all RSVP submissions
-    const rsvps: any[] = [];
-    for (const key of keys.keys) {
-      const value = await env.rsvp.get(key.name);
-      if (value) {
-        rsvps.push(JSON.parse(value));
-      }
-    }
-    
-    // Sort by timestamp (newest first)
-    rsvps.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-    
-    return new Response(JSON.stringify(rsvps), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
-  } catch (error) {
-    console.error('Error retrieving RSVPs:', error);
-    
-    return new Response(JSON.stringify({ error: 'Failed to retrieve RSVPs' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
   }
 }
