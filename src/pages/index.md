@@ -245,15 +245,22 @@ discover:
     <div class="wrapper flow prose">
       <h2 id="gifts"><a href="#gifts" class="heading-anchor">Gifts</a></h2>
 <p>
-  Your presence is the greatest gift we could ask for! We do not expect any gifts—just come and celebrate with us and have fun.
+  Your presence is the greatest gift we could ask for! We do not expect any gifts — just come and celebrate with us and have fun.
 </p>
 <p>
   However, if you would still like to give something, we would appreciate any of the following:
 </p>
+<p>For Baby:</p>
 <ul>
   <li>Books</li>
   <li>Nappies</li>
-  <li>Baby grows</li>
+  <li>Baby grows - 3-6, 6-9 Months</li>
+  <li>Water Wipes brand (due to alergies)</li>
+</ul>
+<p>For Mum:</p>
+<ul>
+  <li>1</li>
+  <li>2</li>
 </ul>
  </article>
 </div>
