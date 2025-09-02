@@ -1,3 +1,17 @@
+// Security headers function
+function getSecurityHeaders(): HeadersInit {
+  return {
+    'Content-Type': 'text/html',
+    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://maps.googleapis.com https://maps.gstatic.com https://*.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://maps.googleapis.com; media-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'X-XSS-Protection': '1; mode=block',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy': 'autoplay=(), camera=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), publickey-credentials-get=()',
+    'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload'
+  };
+}
+
 export default {
   async fetch(request: Request, env: any, ctx: any) {
     const url = new URL(request.url);
@@ -36,7 +50,7 @@ export default {
       </html>
     `, {
       status: 200,
-      headers: { 'Content-Type': 'text/html' }
+      headers: getSecurityHeaders()
     });
   },
 };
@@ -76,9 +90,7 @@ async function handleRSVPSubmission(request: Request, env: any) {
       `Thank you ${name_field}! Your RSVP has been received and saved.`,
       {
         status: 200,
-        headers: {
-          "Content-Type": "text/html",
-        },
+        headers: getSecurityHeaders()
       }
     );
   } catch (error) {
@@ -88,9 +100,7 @@ async function handleRSVPSubmission(request: Request, env: any) {
       `Sorry, there was an error saving your RSVP. Please try again or contact us directly.`,
       {
         status: 500,
-        headers: {
-          "Content-Type": "text/html",
-        },
+        headers: getSecurityHeaders()
       }
     );
   }
