@@ -52,8 +52,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(plugins.syntaxHighlight);
 
   eleventyConfig.addPlugin(plugins.webc, {
-    components: ['./src/_includes/webc/**/*.webc'],
-    useTransform: true
+    components: 'src/_includes/webc/**/*.webc'
   });
 
   eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
@@ -71,6 +70,7 @@ export default async function (eleventyConfig) {
 
   // ---------------------  bundle
   eleventyConfig.addBundle('css', {hoist: true});
+  eleventyConfig.addBundle('js', {hoist: true});
 
   // 	--------------------- Library and Data
   eleventyConfig.setLibrary('md', plugins.markdownLib);
@@ -99,9 +99,9 @@ export default async function (eleventyConfig) {
   // --------------------- Passthrough File Copy
 
   // -- same path
-  ['src/assets/fonts/', 'src/assets/images/template', 'src/assets/og-images'].forEach(path =>
-    eleventyConfig.addPassthroughCopy(path)
-  );
+  eleventyConfig.addPassthroughCopy('src/assets/fonts/');
+  eleventyConfig.addPassthroughCopy('src/assets/images/template');
+  eleventyConfig.addPassthroughCopy('src/assets/og-images');
 
   eleventyConfig.addPassthroughCopy({
     // -- to root
