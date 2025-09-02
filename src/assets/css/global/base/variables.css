@@ -36,8 +36,8 @@
   --color-text: var(--color-gray-800);
   --color-bg: var(--color-gray-100);
 
-  --color-primary: var(--color-pink);
-  --color-secondary: var(--color-blue);
+  --color-primary: var(--color-purple);
+  --color-secondary: var(--color-pink);
   --color-tertiary: var(--color-gold);
 
   --color-text-accent: var(--color-gray-700);

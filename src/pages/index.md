@@ -134,7 +134,7 @@ discover:
   }
 
   .submit-btn:hover {
-    background: #0056b3;
+    background: var(--color-secondary);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }

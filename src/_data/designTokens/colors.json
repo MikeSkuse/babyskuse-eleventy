@@ -61,6 +61,10 @@
     {
       "name": "Gold Subdued",
       "value": "#f1c15b"
+    },
+    {
+      "name": "Purple",
+      "value": "#4F359B"
     }
   ]
 }
