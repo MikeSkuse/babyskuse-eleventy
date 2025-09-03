@@ -25,6 +25,7 @@ discover:
         <strong>🕐 Time:</strong> 4:00 PM - 7:30 PM </br>
         <strong>📍 Where:</strong> <a href="https://maps.app.goo.gl/Hru23P6kad21dQ1NA" target="_blank" rel="noopener">Royal Wootton Bassett Memorial Hall</a> (Ample free parking!🅿️)</br>
         <strong>🥪 Food:</strong> Party Foods & Drinks / Cold Buffet and Cake 🍰 </br>
+        <strong>👨‍👩‍👧‍👦 Who:</strong> Partners and Children also invited </br>
         <strong>🎲 Games:</strong> Baby Bingo, Baby Trivia, The Price is Right, What's in the box</br>
         <strong>📃 Activities:</strong> Wordsearch, Word Scramble, Baby Predictions, Advice & Wishes </br>
       </p>
