@@ -102,6 +102,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets/fonts/');
   eleventyConfig.addPassthroughCopy('src/assets/images/template');
   eleventyConfig.addPassthroughCopy('src/assets/og-images');
+  eleventyConfig.addPassthroughCopy('src/_headers');
 
   eleventyConfig.addPassthroughCopy({
     // -- to root
